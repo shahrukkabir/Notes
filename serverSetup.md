@@ -65,4 +65,4 @@ app.listen(port, () => {
 
 Follow the deployment guide here:
 
-🔗 [Client Deploy Guide](https://github.com/ProgrammingHero1/Job-Portal-Resources/blob/main/server-deploy.md)
+🔗 [Server Deploy Guide](https://github.com/ProgrammingHero1/Job-Portal-Resources/blob/main/server-deploy.md)
