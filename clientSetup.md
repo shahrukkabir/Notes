@@ -1,4 +1,4 @@
-# ⚛️ Client Side Project Setup (React + TailwindCSS + DaisyUI + React Router)
+## ⚛️ Client Side Project Setup (React + TailwindCSS + DaisyUI + React Router)
 
 ### 1️⃣ Initialize React Project
 ```bash
