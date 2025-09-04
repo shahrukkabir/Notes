@@ -1,8 +1,8 @@
-## 🖥️ Server Side Project Setup (Express + MongoDB + Vercel Deployment)
+## 🖥️ Server Side Project Setup(Express + MongoDB + Vercel Deployment)
 
 ### 1️⃣ Initialize Node.js Project
 
-```bash
+  ```bash
 cd <your-project-directory>
 mkdir <your-server-folder-name>
 cd <your-server-folder-name>
@@ -11,7 +11,7 @@ npm install express cors mongodb dotenv
 ```
 ### 2️⃣ Basic Server Setup with MongoDB
 
-```js
+  ```js
 const express = require("express");
 const cors = require("cors");
 const { MongoClient, ServerApiVersion } = require("mongodb");
@@ -24,7 +24,8 @@ const port = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
 
-const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.mongodb.net/?retryWrites=true&w=majority`;
+const uri = `mongodb + srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.wi4y4.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`;
+
 
 const client = new MongoClient(uri, {
   serverApi: {
@@ -37,15 +38,20 @@ const client = new MongoClient(uri, {
 async function run() {
   try {
     await client.connect();
-    console.log("Connected to MongoDB!");
+    console.log("✅ Connected to MongoDB!");
 
-    const database = client.db("yourDatabaseName");
-    const collection = database.collection("yourCollectionName");
+    // Get a reference to the desired collection in the database
+    const collection = client.db("yourDatabaseName").collection("yourCollectionName");
+    
     // You can add your API routes here
+    app.get("/data", async (req, res) => {
+      const result = await collection.find().toArray();
+      res.send(result);
+    });
 
-  } 
+  }
   catch (error) {
-    console.error("MongoDB connection error:", error);
+    console.error("❌ MongoDB connection error:", error);
   }
 }
 
