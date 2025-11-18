@@ -4,62 +4,53 @@
 ```bash
 npm create vite@latest name-of-your-project -- --template react
 cd <your-new-project-directory>
-npm install react-router-dom
-npm install localforage match-sorter sort-by
+npm install react-router
 ```
 
 ### 2️⃣ TailwindCSS Setup
 
 ```bash
-npm install -D tailwindcss@3
+npm install tailwindcss @tailwindcss/vite
 npx tailwindcss init
 ```
 ### 3️⃣ DaisyUI Installation
 ```bash
 npm i -D daisyui@latest
 ```
-### ✏️ Configure tailwind.config.js
+### ✏️ Configure vite.config.js
 ```js
-/** @type {import('tailwindcss').Config} */
-export default {
-  content: [
-    "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
-  ],
-  theme: {
-    extend: {},
-  },
-  plugins: [require("daisyui")],
-}
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+import tailwindcss from '@tailwindcss/vite'
+
+export default defineConfig({
+  plugins: [react(), tailwindcss()],
+})
 
 ```
-### 4️⃣ Setup Tailwind in index.css
+### 4️⃣ Setup index.css
 ```css
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-```
-### 5️⃣ ESLint Configuration 
-##### If using eslint.config.js, ensure this line exists:
-```js
-node: true
+@import "tailwindcss";
+@plugin "daisyui";
 ```
 ### 6️⃣ Basic React Router Setup
 ```js
-import {createBrowserRouter,RouterProvider,} from "react-router-dom";
+import { createBrowserRouter } from "react-router";
+import RootLayout from "../layouts/RootLayout";
+import Home from "../pages/Home/Home/Home";
 
-const router = createBrowserRouter([
+export const router = createBrowserRouter([
   {
     path: "/",
-    element: <div>Hello world!</div>,
+    Component: RootLayout,
+    children: [
+        {
+            index: true,
+            Component: Home
+        }
+    ]
   },
 ]);
-
-ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
-    <RouterProvider router={router} />
-  </React.StrictMode>
-);
 ```
 ### 📤 Client Side Deployment
 
