@@ -71,4 +71,4 @@ app.listen(port, () => {
 
 Follow the deployment guide here:
 
-🔗 [Server Deploy Guide](https://github.com/ProgrammingHero1/Job-Portal-Resources/blob/main/server-deploy.md)
+🔗 [Server Deploy Guide](https://github.com/ProgrammingHero1/Zap-shift-Resources/blob/main/server-deploy.md)
